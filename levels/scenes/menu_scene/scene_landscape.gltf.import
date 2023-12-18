@@ -1,0 +1,77 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://qsvnt3q54qd3"
+path="res://.godot/imported/scene_landscape.gltf-2ce2da2886aa0ac2248273ece95ecc92.scn"
+
+[deps]
+
+source_file="res://levels/scenes/menu_scene/scene_landscape.gltf"
+dest_files=["res://.godot/imported/scene_landscape.gltf-2ce2da2886aa0ac2248273ece95ecc92.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/Material.001.tres"
+},
+"boat": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/boat.tres"
+},
+"boat1": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/boat1.tres"
+},
+"foam": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/foam.tres"
+},
+"rock": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/rock.tres"
+},
+"sails": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/sails.tres"
+},
+"snow": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/snow.tres"
+},
+"tree.001": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/tree.001.tres"
+},
+"wood": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/wood.tres"
+},
+"wood.001": {
+"use_external/enabled": true,
+"use_external/path": "res://levels/scenes/menu_scene/extracted_materials/wood.001.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

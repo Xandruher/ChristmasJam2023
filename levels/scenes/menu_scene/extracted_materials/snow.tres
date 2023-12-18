@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bs8i0vk3v630f"]
+
+[resource]
+resource_name = "snow"
+cull_mode = 2
+metallic = 1.0

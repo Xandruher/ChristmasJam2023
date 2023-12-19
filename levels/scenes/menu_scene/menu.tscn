@@ -1,0 +1,654 @@
+[gd_scene load_steps=36 format=3 uid="uid://cvb6dt72bj36c"]
+
+[ext_resource type="Script" path="res://levels/scenes/menu_scene/menu_scene_UI/load_transition_anim.gd" id="1_71vf1"]
+[ext_resource type="Shader" path="res://levels/scenes/menu_scene/menu_scene_shaders/tiltshift_blur.gdshader" id="2_tbew2"]
+[ext_resource type="Script" path="res://levels/scenes/menu_scene/menu_scene_UI/scene_buttons.gd" id="3_yvbe5"]
+[ext_resource type="VideoStream" path="res://levels/scenes/menu_scene/entropy_emblem_circular.ogv" id="4_w0tfy"]
+[ext_resource type="Script" path="res://levels/scenes/menu_scene/menu_scene_UI/fix_particle_size.gd" id="5_asyef"]
+[ext_resource type="PackedScene" uid="uid://dcm4k4d0ut1ke" path="res://components/particles/snow_fall.tscn" id="6_fw5kd"]
+[ext_resource type="PackedScene" uid="uid://dagfu4kuaj1db" path="res://levels/scenes/menu_scene/scene_landscape_inh.tscn" id="7_skmbg"]
+[ext_resource type="AudioStream" uid="uid://bbdsx3jvg6rt" path="res://sounds/menu_scene_theme.mp3" id="8_qyeu1"]
+[ext_resource type="Script" path="res://levels/scenes/menu_scene/scene_settings/Play Button.gd" id="9_aknkl"]
+[ext_resource type="PackedScene" uid="uid://b2bdim6sbllq3" path="res://levels/test.tscn" id="10_txmq0"]
+
+[sub_resource type="Animation" id="Animation_gl05q"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Screen/title_and_credits:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wjktt"]
+resource_name = "menu_transition"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 3, 5.5, 6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 3, 5.5, 6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 3, 5.5, 6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Screen/title_and_credits:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 3, 5.5, 6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(5, 5.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(5, 5.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(5, 5.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(5, 5.5)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Screen/title_and_credits:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Screen/entropy_studio_intro:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74fqv"]
+_data = {
+"RESET": SubResource("Animation_gl05q"),
+"menu_transition": SubResource("Animation_wjktt")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvnt3"]
+shader = ExtResource("2_tbew2")
+shader_parameter/limit = 0.317
+shader_parameter/blur = 2.5
+shader_parameter/intensity = 0.245
+shader_parameter/debug = false
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vfacx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kak8"]
+bg_color = Color(0.2, 0.812, 0.58, 0.5)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.2, 0.812, 0.58, 0.5)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsxrv"]
+bg_color = Color(0.2, 0.812, 0.58, 0.75)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.2, 1, 0.580392, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74d17"]
+bg_color = Color(0.2, 1, 0.580392, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.2, 1, 0.580392, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un406"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bd01k"]
+font_size = 80
+outline_size = 8
+outline_color = Color(0.486275, 0, 0.486275, 1)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvet3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_3d4su"]
+Panel/styles/panel = SubResource("StyleBoxFlat_yvet3")
+
+[sub_resource type="Gradient" id="Gradient_nuwex"]
+offsets = PackedFloat32Array(0, 0.0942408, 0.73822, 1)
+colors = PackedColorArray(100, 100, 100, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xs2km"]
+gradient = SubResource("Gradient_nuwex")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_345jr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 0.1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 15, 0)
+scale_min = 0.03
+scale_max = 0.08
+color_ramp = SubResource("GradientTexture1D_xs2km")
+
+[sub_resource type="Gradient" id="Gradient_bapjm"]
+offsets = PackedFloat32Array(0.35426, 0.55157)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j2uy2"]
+gradient = SubResource("Gradient_bapjm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nehjp"]
+line_spacing = 10.95
+font_size = 80
+font_color = Color(1, 0, 0.176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gitux"]
+line_spacing = 10.95
+font_size = 50
+font_color = Color(0.286275, 0.929412, 0.52549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dgs40"]
+line_spacing = 10.95
+font_size = 30
+font_color = Color(0.215686, 0.886275, 0.054902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g31ey"]
+font_size = 30
+font_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8kxah"]
+
+[sub_resource type="Sky" id="Sky_paixm"]
+sky_material = SubResource("ProceduralSkyMaterial_8kxah")
+
+[sub_resource type="Environment" id="Environment_jsg02"]
+background_mode = 2
+sky = SubResource("Sky_paixm")
+ambient_light_source = 3
+ambient_light_color = Color(0.32549, 0.533333, 1, 1)
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.5
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 2.29
+glow_strength = 0.78
+glow_bloom = 0.16
+fog_light_color = Color(0.658824, 0.690196, 0.737255, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ruoy7"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 13.0
+dof_blur_far_transition = 8.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 6.5
+dof_blur_near_transition = 4.0
+dof_blur_amount = 0.08
+
+[node name="MenuScene" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_74fqv")
+}
+script = ExtResource("1_71vf1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Screen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TiltShift" type="MarginContainer" parent="CanvasLayer/Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screen/TiltShift"]
+material = SubResource("ShaderMaterial_cvnt3")
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_vfacx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="menu_options" type="VBoxContainer" parent="CanvasLayer/Screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("3_yvbe5")
+
+[node name="play" type="Button" parent="CanvasLayer/Screen/HBoxContainer/menu_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_4kak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wsxrv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_74d17")
+text = "Play"
+icon_alignment = 1
+expand_icon = true
+
+[node name="options" type="Button" parent="CanvasLayer/Screen/HBoxContainer/menu_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_4kak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wsxrv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_74d17")
+text = "Options"
+icon_alignment = 1
+expand_icon = true
+
+[node name="quit" type="Button" parent="CanvasLayer/Screen/HBoxContainer/menu_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_4kak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wsxrv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_74d17")
+text = "Quit"
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="entropy_studio_intro" type="Panel" parent="CanvasLayer/Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_un406")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Screen/entropy_studio_intro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Screen/entropy_studio_intro/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Screen/entropy_studio_intro/VBoxContainer2/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Entropy"
+label_settings = SubResource("LabelSettings_bd01k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Screen/entropy_studio_intro/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_bottom = -365
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Screen/entropy_studio_intro/VBoxContainer2/MarginContainer2"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+stream = ExtResource("4_w0tfy")
+autoplay = true
+expand = true
+loop = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Screen/entropy_studio_intro/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Screen/entropy_studio_intro/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Studio"
+label_settings = SubResource("LabelSettings_bd01k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="title_and_credits" type="Panel" parent="CanvasLayer/Screen"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3d4su")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Screen/title_and_credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
+position = Vector2(576, 0)
+scale = Vector2(5.775, 0.14)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_345jr")
+texture = SubResource("GradientTexture2D_j2uy2")
+lifetime = 7.0
+preprocess = 7.0
+fixed_fps = 60
+script = ExtResource("5_asyef")
+
+[node name="Label" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
+layout_mode = 2
+text = "Santa's Gone!"
+label_settings = SubResource("LabelSettings_nehjp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
+layout_mode = 2
+text = "A game created for the 2023 gamejam!
+Theme: Christmas"
+label_settings = SubResource("LabelSettings_gitux")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 8
+
+[node name="Label3" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Contributors:"
+label_settings = SubResource("LabelSettings_dgs40")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="C1" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Anemmeny (Lead developer)"
+label_settings = SubResource("LabelSettings_g31ey")
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="C2" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SeaOfTorment (General developer)"
+label_settings = SubResource("LabelSettings_g31ey")
+horizontal_alignment = 1
+
+[node name="SnowFall" parent="." instance=ExtResource("6_fw5kd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93654, 8.86039, 0)
+
+[node name="scene_landscape" parent="." instance=ExtResource("7_skmbg")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.637424, -0.16677, 0.752249, 0, 0.976296, 0.21644, -0.770513, -0.137964, 0.622315, 12.513, 3.3964, 10.975)
+fov = 52.5
+far = 134.95
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.927236, -0.118203, 0.355332, 1.25717e-08, 0.948876, 0.315649, -0.374477, 0.292681, -0.879832, 0, 2.81802, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jsg02")
+camera_attributes = SubResource("CameraAttributesPractical_ruoy7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_qyeu1")
+volume_db = -3.0
+autoplay = true
+
+[node name="Scene_Settings" type="Node" parent="."]
+
+[node name="Play_Button" type="Node" parent="Scene_Settings"]
+script = ExtResource("9_aknkl")
+scene = ExtResource("10_txmq0")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
+[connection signal="pressed" from="CanvasLayer/Screen/HBoxContainer/menu_options/play" to="CanvasLayer/Screen/HBoxContainer/menu_options" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Screen/HBoxContainer/menu_options/options" to="CanvasLayer/Screen/HBoxContainer/menu_options" method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Screen/HBoxContainer/menu_options/quit" to="CanvasLayer/Screen/HBoxContainer/menu_options" method="_on_quit_pressed"]

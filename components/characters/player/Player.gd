@@ -168,7 +168,7 @@ func _run_state_update():
 		state_update(active_state, prev_state)
 
 
-func state_update(state, prev_state):
+func state_update(state, _prev_state): #underscored to prevent error on unused var
 	if state in ANIMATION_MAP:
 		animation.play(ANIMATION_MAP[state])
 	else:

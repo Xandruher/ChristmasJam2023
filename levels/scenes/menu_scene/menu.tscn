@@ -1,15 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://cvb6dt72bj36c"]
+[gd_scene load_steps=37 format=3 uid="uid://cvb6dt72bj36c"]
 
 [ext_resource type="Script" path="res://levels/scenes/menu_scene/menu_scene_UI/load_transition_anim.gd" id="1_71vf1"]
 [ext_resource type="Shader" path="res://levels/scenes/menu_scene/menu_scene_shaders/tiltshift_blur.gdshader" id="2_tbew2"]
 [ext_resource type="Script" path="res://levels/scenes/menu_scene/menu_scene_UI/scene_buttons.gd" id="3_yvbe5"]
 [ext_resource type="VideoStream" path="res://levels/scenes/menu_scene/entropy_emblem_circular.ogv" id="4_w0tfy"]
 [ext_resource type="Script" path="res://levels/scenes/menu_scene/menu_scene_UI/fix_particle_size.gd" id="5_asyef"]
+[ext_resource type="Script" path="res://levels/scenes/menu_scene/fps_counter.gd" id="6_54ews"]
 [ext_resource type="PackedScene" uid="uid://dcm4k4d0ut1ke" path="res://components/particles/snow_fall.tscn" id="6_fw5kd"]
 [ext_resource type="PackedScene" uid="uid://dagfu4kuaj1db" path="res://levels/scenes/menu_scene/scene_landscape_inh.tscn" id="7_skmbg"]
 [ext_resource type="AudioStream" uid="uid://bbdsx3jvg6rt" path="res://sounds/menu_scene_theme.mp3" id="8_qyeu1"]
 [ext_resource type="Script" path="res://levels/scenes/menu_scene/scene_settings/Play Button.gd" id="9_aknkl"]
-[ext_resource type="PackedScene" uid="uid://b2bdim6sbllq3" path="res://levels/test.tscn" id="10_txmq0"]
+[ext_resource type="PackedScene" uid="uid://cm8sfsfsxp802" path="res://main/Main.tscn" id="10_rl0pc"]
 
 [sub_resource type="Animation" id="Animation_gl05q"]
 length = 0.001
@@ -321,7 +322,8 @@ gradient = SubResource("Gradient_nuwex")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_345jr"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(100, 0.1, 0)
+emission_shape_offset = Vector3(576, 0, 0)
+emission_shape_scale = Vector3(576, 0, 0)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 direction = Vector3(0, 0, 0)
@@ -557,14 +559,14 @@ grow_vertical = 2
 alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
-position = Vector2(576, 0)
-scale = Vector2(5.775, 0.14)
-amount = 200
+emitting = false
+amount = 400
 process_material = SubResource("ParticleProcessMaterial_345jr")
 texture = SubResource("GradientTexture2D_j2uy2")
 lifetime = 7.0
 preprocess = 7.0
 fixed_fps = 60
+local_coords = true
 script = ExtResource("5_asyef")
 
 [node name="Label" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer"]
@@ -619,6 +621,23 @@ text = "SeaOfTorment (General developer)"
 label_settings = SubResource("LabelSettings_g31ey")
 horizontal_alignment = 1
 
+[node name="FPS" type="MarginContainer" parent="CanvasLayer/Screen"]
+modulate = Color(0.403922, 1, 0.686275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/Screen/FPS"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+script = ExtResource("6_54ews")
+
 [node name="SnowFall" parent="." instance=ExtResource("6_fw5kd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93654, 8.86039, 0)
 
@@ -646,7 +665,7 @@ autoplay = true
 
 [node name="Play_Button" type="Node" parent="Scene_Settings"]
 script = ExtResource("9_aknkl")
-scene = ExtResource("10_txmq0")
+scene = ExtResource("10_rl0pc")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Screen/HBoxContainer/menu_options/play" to="CanvasLayer/Screen/HBoxContainer/menu_options" method="_on_play_pressed"]

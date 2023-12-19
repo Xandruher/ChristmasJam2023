@@ -15,16 +15,13 @@ run/main_scene="res://levels/scenes/menu_scene/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [filesystem]
 
 import/blender/enabled=false
-
-[display]
-
-window/size/mode=2
-
-[filesystem]
-
 import/fbx/enabled=false
 
 [input]
@@ -66,6 +63,7 @@ roll={
 
 [rendering]
 
+environment/screen_space_reflection/roughness_quality=2
+environment/subsurface_scattering/subsurface_scattering_quality=2
 anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/screen_space_aa=1
-anti_aliasing/quality/use_taa=true

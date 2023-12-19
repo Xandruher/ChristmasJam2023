@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm8sfsfsxp802"]
+
+[ext_resource type="PackedScene" uid="uid://d3bqcl4qj66ua" path="res://levels/TestLevel.tscn" id="1_is10m"]
+[ext_resource type="PackedScene" uid="uid://ggxqscmbpasw" path="res://components/characters/player/Player.tscn" id="2_n8fi4"]
+[ext_resource type="PackedScene" uid="uid://dn2jnthg0mc1i" path="res://components/test/BoxObject.tscn" id="3_8fvvr"]
+
+[node name="Main" type="Node3D"]
+
+[node name="TestLevel" parent="." instance=ExtResource("1_is10m")]
+
+[node name="Player" parent="." instance=ExtResource("2_n8fi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344642, 1.20982, 0.778565)
+
+[node name="BoxObject" parent="." instance=ExtResource("3_8fvvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.988405, 1.70859, -3.36494)
+
+[node name="BoxObject2" parent="." instance=ExtResource("3_8fvvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.19979, 1.57883, 0)
+
+[node name="BoxObject3" parent="." instance=ExtResource("3_8fvvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14479, 1.83977, 1.36809)

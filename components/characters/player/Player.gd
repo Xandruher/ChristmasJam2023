@@ -30,7 +30,7 @@ const ACTION_DATA = {
 }
 
 @onready var camera_mount = $CameraMount
-@onready var hitbox = $AttackHitbox
+@onready var hitbox = $betterAnim/Armature/Skeleton3D/BoneAttachment3D/sword/AttackHitbox
 
 @onready var mesh = $betterAnim
 @onready var animation = $betterAnim/AnimationPlayer
@@ -107,6 +107,7 @@ func _handle_input():
 #	Handle Attack
 #
 func attack(type = "basic_attack"):
+	$"betterAnim/Armature/Skeleton3D/BoneAttachment3D/sword/attack_sound".play(0.0)
 	if active_cds[type] > 0: return
 	add_state(ATTACK)
 	curr_action = type
@@ -117,7 +118,7 @@ func attack(type = "basic_attack"):
 func _handle_attack(delta):
 	action_delta -= delta
 	if action_delta < 0:
-		hitbox.monitoring = false
+		#hitbox.monitoring = false
 		return
 	add_state(ATTACK)
 	
@@ -126,8 +127,10 @@ func _handle_attack(delta):
 	
 	if t >= a_data["impact_start"] and t <= a_data["impact_end"]:
 		hitbox.monitoring = true
+		pass
 	else:
 		hitbox.monitoring = false
+		pass
 
 
 #
@@ -135,6 +138,7 @@ func _handle_attack(delta):
 #
 func _handle_hitbox_collision(body):
 	if (body.has_method("hit")):
+		print("hit")
 		var direction = body.global_position - global_position
 		direction.y += 1
 		body.hit(1, direction)
@@ -188,7 +192,8 @@ func _physics_process(delta):
 	_update_cd(delta)
 	_handle_attack(delta)
 	
-	if input["attack"]: attack()
+	if input["attack"]: 
+		attack()
 	
 	var local_dir = get_movement_direction()
 	var dir = transform.basis * local_dir
@@ -204,10 +209,8 @@ func _physics_process(delta):
 		jump_state_cd = JUMP_TIME
 		velocity.y = JUMP_VELOCITY
 	
-	
 	if dir.length_squared() > 0:
 		add_state(RUN)
-	
 	
 	move_and_slide()
 	_check_for_states(delta)

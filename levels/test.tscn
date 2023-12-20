@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2bdim6sbllq3"]
+[gd_scene load_steps=2 format=3 uid="uid://bbp7mrjlkoqbn"]
 
-[ext_resource type="Script" path="res://levels/test.gd" id="1_btxmp"]
+[sub_resource type="GDScript" id="GDScript_x104i"]
+script/source = "extends Node3D
+
+func _ready():
+	print(\"Hello, world! You've made it to the test level!\")
+"
 
 [node name="Test" type="Node3D"]
-script = ExtResource("1_btxmp")
+script = SubResource("GDScript_x104i")

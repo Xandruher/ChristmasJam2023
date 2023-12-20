@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ggxqscmbpasw"]
+[gd_scene load_steps=4 format=3 uid="uid://ggxqscmbpasw"]
 
 [ext_resource type="Script" path="res://components/characters/player/Player.gd" id="1_73hjx"]
 [ext_resource type="PackedScene" uid="uid://di3bq3ovj0hxc" path="res://components/characters/player/PlayerMeshMain.tscn" id="2_g80cy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wku1q"]
 radius = 0.3
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hgt05"]
-size = Vector3(0.25, 0.25, 0.25)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_73hjx")
@@ -24,11 +21,3 @@ shape = SubResource("CapsuleShape3D_wku1q")
 spring_length = 4.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount/SpringArm3D"]
-
-[node name="AttackHitbox" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0746698, -1.06203)
-shape = SubResource("BoxShape3D_hgt05")
-
-[connection signal="body_entered" from="AttackHitbox" to="." method="handle_hitbox_collision"]

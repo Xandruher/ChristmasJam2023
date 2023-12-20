@@ -24,6 +24,7 @@ shape = SubResource("CapsuleShape3D_wku1q")
 spring_length = 4.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount/SpringArm3D"]
+current = true
 
 [node name="AttackHitbox" type="Area3D" parent="."]
 

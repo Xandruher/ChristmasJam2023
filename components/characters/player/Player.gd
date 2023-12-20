@@ -30,6 +30,7 @@ const ACTION_DATA = {
 @onready var camera_mount = $CameraMount
 @onready var hitbox = $betterAnim/Armature/Skeleton3D/BoneAttachment3D/sword/AttackHitbox
 
+@onready var mesh = $betterAnim
 @onready var animation = $betterAnim/AnimationPlayer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -52,11 +53,14 @@ var active_cds = {
 	"basic_attack": 0
 }
 
+var curr_direction = Vector3(1, 0, 0)
 var curr_action = "basic_attack"
 var action_delta = 0
 
 var pending_states = []
 var active_state = IDLE
+
+
 
 var jump_state_cd = 0
 var land_state_cd = 0
@@ -188,7 +192,16 @@ func _physics_process(delta):
 	if input["attack"]: 
 		attack()
 	
-	var dir = transform.basis * get_movement_direction()
+	var local_dir = get_movement_direction()
+	var dir = transform.basis * local_dir
+	
+	if (local_dir.length_squared() > 0):
+		var temp = local_dir
+		temp.y = 0
+		curr_direction = temp
+	
+	mesh.transform = mesh.transform.interpolate_with(mesh.transform.looking_at(curr_direction * -10), 0.2)
+	hitbox.rotation.y = mesh.rotation.y + deg_to_rad(180)
 	
 	velocity.x = dir.x * SPEED
 	velocity.z = dir.z * SPEED

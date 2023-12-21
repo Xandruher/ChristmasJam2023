@@ -25,8 +25,8 @@ const ANIMATION_MAP = {
 const ACTION_DATA = {
 	"basic_attack": {
 		"time": 1.7,
-		"impact_start": 0.6,
-		"impact_end": 0.8,
+		"impact_start": 0.5,
+		"impact_end": 1.6,
 		"cd": 1.8,
 	}
 }

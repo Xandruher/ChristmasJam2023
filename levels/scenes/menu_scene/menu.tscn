@@ -644,7 +644,7 @@ theme_override_constants/margin_right = 50
 [node name="C2" type="Label" parent="CanvasLayer/Screen/title_and_credits/VBoxContainer/HBoxContainer2/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Xandruher (3D Artist & Animator)"
+text = "Xandruher (3D Modeler)"
 label_settings = SubResource("LabelSettings_g31ey")
 horizontal_alignment = 1
 

@@ -66,42 +66,9 @@ var jump_state_cd = 0
 var land_state_cd = 0
 
 
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
-#
-#	Input Monitoring
-#
-func _input(event):
-	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * mouse_sens_x * SENSE_REDUCE))
-		camera_mount.rotate_x(deg_to_rad(-event.relative.y * mouse_sens_y * SENSE_REDUCE))
-		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
-
-func _check_input_pressed(action):
-	if Input.is_action_pressed(action):
-		input[action] = true
-	else:
-		input[action] = false
-
-
-func _check_input_just_pressed(action):
-	if Input.is_action_just_pressed(action):
-		input[action] = true
-	else:
-		input[action] = false
-
-
-func _handle_input():
-	_check_input_pressed("move_left")
-	_check_input_pressed("move_right")
-	_check_input_pressed("move_forward")
-	_check_input_pressed("move_backwards")
-	_check_input_just_pressed("jump")
-	_check_input_pressed("attack")
-
+func _handle_ai(delta):
+	
+	pass
 
 #
 #	Handle Attack
@@ -184,7 +151,7 @@ func _state_update(state, _prev_state): #underscored to prevent error on unused 
 #	Game Updates
 #
 func _physics_process(delta):
-	_handle_input()
+	_handle_ai(delta)
 	_update_cd(delta)
 	_handle_attack(delta)
 	

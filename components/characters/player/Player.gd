@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 enum { IDLE=0, RUN=1, LAND=2, FALL=3, JUMP=4, ATTACK=5 }
 
+signal finish_control
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 6
 const SENSE_REDUCE = 0.5
@@ -23,8 +25,8 @@ const ANIMATION_MAP = {
 const ACTION_DATA = {
 	"basic_attack": {
 		"time": 1.7,
-		"impact_start": 0.8,
-		"impact_end": 1.1,
+		"impact_start": 0.6,
+		"impact_end": 0.8,
 		"cd": 1.8,
 	}
 }
@@ -64,6 +66,24 @@ var active_state = IDLE
 
 var jump_state_cd = 0
 var land_state_cd = 0
+
+
+#
+# Animation vars
+#
+const DEFAULT_CONTROL = {
+	"animation": "idle",
+	"start_rotation": null,
+	"end_rotation": null,
+	"start_position": null,
+	"end_position": null,
+	"time": 1,
+	"end_animation": "idle"
+}
+
+var being_controlled = false
+var control_time = 0
+var current_control = DEFAULT_CONTROL.duplicate()
 
 
 func _ready():
@@ -107,7 +127,6 @@ func _handle_input():
 #	Handle Attack
 #
 func attack(type = "basic_attack"):
-	$"betterAnim/Armature/Skeleton3D/BoneAttachment3D/sword/attack_sound".play(0.0)
 	if active_cds[type] > 0: return
 	add_state(ATTACK)
 	curr_action = type
@@ -118,7 +137,7 @@ func attack(type = "basic_attack"):
 func _handle_attack(delta):
 	action_delta -= delta
 	if action_delta < 0:
-		#hitbox.monitoring = false
+		hitbox.monitoring = false
 		return
 	add_state(ATTACK)
 	
@@ -127,10 +146,8 @@ func _handle_attack(delta):
 	
 	if t >= a_data["impact_start"] and t <= a_data["impact_end"]:
 		hitbox.monitoring = true
-		pass
 	else:
 		hitbox.monitoring = false
-		pass
 
 
 #
@@ -138,7 +155,6 @@ func _handle_attack(delta):
 #
 func _handle_hitbox_collision(body):
 	if (body.has_method("hit")):
-		print("hit")
 		var direction = body.global_position - global_position
 		direction.y += 1
 		body.hit(1, direction)
@@ -188,12 +204,15 @@ func _state_update(state, _prev_state): #underscored to prevent error on unused 
 #	Game Updates
 #
 func _physics_process(delta):
+	if being_controlled:
+		_handle_controller(delta)
+		return
+	
 	_handle_input()
 	_update_cd(delta)
 	_handle_attack(delta)
 	
-	if input["attack"]: 
-		attack()
+	if input["attack"]: attack()
 	
 	var local_dir = get_movement_direction()
 	var dir = transform.basis * local_dir
@@ -209,8 +228,10 @@ func _physics_process(delta):
 		jump_state_cd = JUMP_TIME
 		velocity.y = JUMP_VELOCITY
 	
+	
 	if dir.length_squared() > 0:
 		add_state(RUN)
+	
 	
 	move_and_slide()
 	_check_for_states(delta)
@@ -225,6 +246,37 @@ func _update_player_direction(local_dir):
 	
 	mesh.transform = mesh.transform.interpolate_with(mesh.transform.looking_at(curr_direction * -10), 0.2)
 	hitbox.rotation.y = mesh.rotation.y + deg_to_rad(180)
+
+
+#
+#	animation control
+#
+
+func set_control(params = {}):
+	current_control = DEFAULT_CONTROL.duplicate()
+	
+	for key in params:
+		current_control[key] = params[key]
+	
+	control_time = 0
+
+
+func _handle_controller(delta):
+	if control_time == 0:
+		if not current_control["start_position"]: current_control["start_position"] = position
+		if not current_control["start_rotation"]: current_control["start_rotation"] = rotation
+		if not current_control["end_position"]: current_control["end_position"] = position
+		if not current_control["end_rotation"]: current_control["end_rotation"] = rotation
+		animation.play(current_control["animation"])
+	control_time += delta
+	
+	var curr_percent = control_time / current_control["time"]
+	curr_percent = clamp(curr_percent, 0, 1)
+	
+	position = current_control["start_position"].lerp(current_control["end_position"], curr_percent)
+	rotation = current_control["start_rotation"].lerp(current_control["end_rotation"], curr_percent)
+
+
 
 
 #
